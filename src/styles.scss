@@ -7,8 +7,20 @@ $red: #ff0000;
 * {
     margin: 0;
     font-family: "Poppins", sans-serif;
+
     .app {
+        display: flex;
+        justify-content: center;
+
         .container {
+            width: 1024px;
+
+            .link {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            //Login and Register
             .auth {
                 display: flex;
                 flex-direction: column;
@@ -54,6 +66,55 @@ $red: #ff0000;
                     span {
                         font-size: 12px;
                         text-align: center;
+                    }
+                }
+            }
+        }
+
+        //Nabar
+        .navbar {
+            .container {
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .logo {
+                    img {
+                        width: 100px;
+                    }
+                }
+
+                .links {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+
+                    h6 {
+                        font-size: 16px;
+                        font-weight: 300;
+                    }
+
+                    span {
+                        cursor: pointer;
+                    }
+
+                    .write {
+                        background-color: $lightGreen;
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 300;
+                        border: 1px solid $white;
+
+                        &:hover {
+                            color: $teal;
+                            background: $white;
+                            border: 1px solid $teal;
+                        }
                     }
                 }
             }
