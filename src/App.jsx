@@ -6,6 +6,7 @@ import { Single } from "./pages/Single";
 import { Write } from "./pages/Write";
 import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
+import "./styles.scss";
 
 const Layout = () => {
     return (
