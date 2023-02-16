@@ -5,6 +5,7 @@ $gray: #999999;
 $red: #ff0000;
 $black: #000;
 $darkGray: #333;
+$lightGray: #555;
 
 * {
     margin: 0;
@@ -197,7 +198,7 @@ $darkGray: #333;
                             background-color: $white;
                             border: 1px solid $teal;
                             color: $teal;
-                            
+
                             &:hover {
                                 border: 1px solid $white;
                                 background-color: $lightGreen;
@@ -221,9 +222,9 @@ $darkGray: #333;
                 gap: 30px;
 
                 img {
-                   width: 100%;
-                   height: 300px;
-                   object-fit: cover; 
+                    width: 100%;
+                    height: 300px;
+                    object-fit: cover;
                 }
 
                 .user {
@@ -267,7 +268,49 @@ $darkGray: #333;
 
             .menu {
                 flex: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+
+                h1 {
+                    font-size: 20px;
+                    color: $lightGray;
+                }
+
+                .post {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    img {
+                        width: 100%;
+                        height: 200px;
+                        object-fit: cover;
+                    }
+
+                    h2 {
+                        color: $lightGray;
+                    }
+
+                    button {
+                        width: max-content;
+                        padding: 7.5px 15px;
+                        border: none;
+                        cursor: pointer;
+                        background-color: $white;
+                        border: 1px solid $teal;
+                        color: $teal;
+
+                        &:hover {
+                            border: 1px solid $white;
+                            background-color: $lightGreen;
+                            color: $black;
+                        }
+                    }
+                }
             }
         }
+
+        
     }
 }
