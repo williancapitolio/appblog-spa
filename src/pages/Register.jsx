@@ -8,6 +8,7 @@ export const Register = () => {
         email: "",
         password: "",
     });
+    const [err, setErr] = useState(null);
 
     const handleChange = (e) => {
         setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -19,8 +20,7 @@ export const Register = () => {
             const res = await api.post("/auth/register", inputs);
             console.log(res);
         } catch (err) {
-            console.log(err);
-            res.status(500).json({ message: "Internal Server Error" });
+            setErr(err.response.data)
         };
     };
 
@@ -32,7 +32,7 @@ export const Register = () => {
                 <input type="email" name="email" placeholder="E-mail" onChange={handleChange} required />
                 <input type="password" name="password" placeholder="Senha" onChange={handleChange} required />
                 <button onClick={handleSubmit}>Registrar</button>
-                <p>Isso é um erro!</p>
+                {err && <p>{err}</p>}
                 <span>Já possui uma conta registrada?
                     <Link to="/login">Login</Link>
                 </span>
