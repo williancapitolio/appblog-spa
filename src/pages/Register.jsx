@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { api } from "../services/Api";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const Register = () => {
     const [inputs, setInputs] = useState({
@@ -10,6 +10,8 @@ export const Register = () => {
     });
     const [err, setErr] = useState(null);
 
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
         setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
@@ -17,8 +19,8 @@ export const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await api.post("/auth/register", inputs);
-            console.log(res);
+            await api.post("/auth/register", inputs);
+            navigate("/login")
         } catch (err) {
             setErr(err.response.data)
         };
