@@ -1,17 +1,38 @@
+import { useEffect, useState } from "react";
+import { api } from "../services/Api";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu } from "../components/Menu"
 
+
 export const Single = () => {
+    const [post, setPost] = useState({});
+
+    const location = useLocation();
+
+    const postId = location.pathname.split("/")[2];
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await api.get(`/posts/${postId}`);
+                setPost(res.data);
+            } catch (err) {
+                console.log(err);
+            };
+        };
+        fetchData();
+    }, [postId]);
+
     return (
         <div className="single">
             <div className="content">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ah0CnwyoNAliZ6Aoa8GAH1HTLHilwh07Sg&usqp=CAU" alt="Imagem do post." />
+                <img src={post?.img} alt="Imagem do post." />
                 <div className="user">
                     <img src="https://avatars.githubusercontent.com/u/70084163?s=96&v=4" alt="Imagem do autor." />
                     <div className="info">
-                        <span>Will</span>
-                        <p>Postado há 2 dias</p>
+                        <span>{post.username}</span>
+                        <p>Postado há </p>
                     </div>
                     <div className="edit">
                         <Link className="link" to={`/write?edit=2`}>
