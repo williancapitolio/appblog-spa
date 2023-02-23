@@ -33,7 +33,7 @@ export const Single = () => {
             <div className="content">
                 <img src={post?.img} alt="Imagem do post." />
                 <div className="user">
-                    <img src={post.userImg} alt="Imagem do autor." />
+                    {post.userImg && <img src={post.userImg} alt="Imagem do autor." />}
                     <div className="info">
                         <span>{post.username}</span>
                         <p>Postado há {moment(post.date).locale("pt-br").fromNow(true)}</p>
