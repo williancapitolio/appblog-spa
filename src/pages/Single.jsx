@@ -3,7 +3,8 @@ import { api } from "../services/Api";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import { Menu } from "../components/Menu"
-
+import moment from "moment/moment";
+import "moment/locale/pt-br";
 
 export const Single = () => {
     const [post, setPost] = useState({});
@@ -32,7 +33,7 @@ export const Single = () => {
                     <img src="https://avatars.githubusercontent.com/u/70084163?s=96&v=4" alt="Imagem do autor." />
                     <div className="info">
                         <span>{post.username}</span>
-                        <p>Postado há </p>
+                        <p>Postado há {moment(post.date).locale("pt-br").fromNow(true)}</p>
                     </div>
                     <div className="edit">
                         <Link className="link" to={`/write?edit=2`}>
