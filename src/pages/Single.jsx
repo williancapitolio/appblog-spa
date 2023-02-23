@@ -33,7 +33,7 @@ export const Single = () => {
             <div className="content">
                 <img src={post?.img} alt="Imagem do post." />
                 <div className="user">
-                    <img src="https://avatars.githubusercontent.com/u/70084163?s=96&v=4" alt="Imagem do autor." />
+                    <img src={post.userImg} alt="Imagem do autor." />
                     <div className="info">
                         <span>{post.username}</span>
                         <p>Postado há {moment(post.date).locale("pt-br").fromNow(true)}</p>
