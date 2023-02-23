@@ -5,17 +5,19 @@ import { Link, useLocation } from "react-router-dom";
 export const Home = () => {
     const [posts, setPosts] = useState([]);
 
+    const cat = useLocation().search;
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await api.get("/posts");
+                const res = await api.get(`/posts${cat}`);
                 setPosts(res.data);
             } catch (err) {
                 console.log(err);
             };
         };
         fetchData();
-    }, []);
+    }, [cat]);
 
     return (
         <div className="home">
