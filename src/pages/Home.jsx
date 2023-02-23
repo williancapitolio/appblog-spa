@@ -32,7 +32,11 @@ export const Home = () => {
                                 <h1>{post.title}</h1>
                             </Link>
                             <p>{post.desc}</p>
-                            <button>Leia mais</button>
+                            <button>
+                                <Link className="link" to={`/post/${post.id}`}>
+                                    Leia mais
+                                </Link>
+                            </button>
                         </div>
                     </div>
                 ))}
