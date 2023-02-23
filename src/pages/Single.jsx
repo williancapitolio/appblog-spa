@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { api } from "../services/Api";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { Menu } from "../components/Menu"
 import moment from "moment/moment";
@@ -13,6 +13,8 @@ export const Single = () => {
     const location = useLocation();
 
     const postId = location.pathname.split("/")[2];
+
+    const navigate = useNavigate();
 
     const { currentUser } = useContext(AuthContext);
 
@@ -28,6 +30,15 @@ export const Single = () => {
         fetchData();
     }, [postId]);
 
+    const handleDelete = async () => {
+        try {
+            await api.delete(`/posts/${postId}`);
+            navigate("/");
+        } catch (err) {
+            console.log(err);
+        };
+    };
+
     return (
         <div className="single">
             <div className="content">
@@ -42,7 +53,7 @@ export const Single = () => {
                         <Link className="link" to={`/write?edit=2`}>
                             <AiOutlineEdit className="action" size={25} />
                         </Link>
-                        <Link className="link" to={`/write/delete`}>
+                        <Link className="link" onClick={handleDelete}>
                             <AiOutlineDelete className="action" size={25} />
                         </Link>
                     </div>}
