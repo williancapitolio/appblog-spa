@@ -20,7 +20,7 @@ export const Navbar = () => {
                     <Link className="link" to="/?cat=design"><h6>Design</h6></Link>
                     <Link className="link" to="/?cat=food"><h6>Alimentação</h6></Link>
                     <span>{currentUser?.username}</span>
-                    {currentUser ? <span onClick={logout}>Sair</span> : <Link className="link" to="/login">Login</Link>}
+                    {currentUser ? <span onClick={logout}><Link className="link" to="/">Sair</Link></span> : <Link className="link" to="/login">Login</Link>}
                     <span className="write"><Link className="link" to="/write">Postar</Link></span>
                 </div>
             </div>
