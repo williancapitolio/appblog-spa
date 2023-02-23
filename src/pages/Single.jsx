@@ -53,9 +53,7 @@ export const Single = () => {
                         <Link className="link" to={`/write?edit=2`}>
                             <AiOutlineEdit className="action" size={25} />
                         </Link>
-                        <Link className="link" onClick={handleDelete}>
-                            <AiOutlineDelete className="action" size={25} />
-                        </Link>
+                        <AiOutlineDelete className="action" size={25} onClick={handleDelete} />
                     </div>}
                 </div>
                 <h1>{post.title}</h1>
