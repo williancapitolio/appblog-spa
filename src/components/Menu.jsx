@@ -21,7 +21,7 @@ export const Menu = ({ cat }) => {
             <h1>Outros posts que você pode gostar</h1>
             {posts.map(post => (
                 <div className="post" key={post.id}>
-                    <img src={post.img} alt="Imagem do post." />
+                    <img src={`/uploads/${post.img}`} alt="Imagem do post." />
                     <h2>{post.title}</h2>
                     <button>Leia mais</button>
                 </div>

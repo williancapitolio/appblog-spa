@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { api } from "../services/Api";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -13,6 +13,8 @@ export const Write = () => {
     const [file, setFile] = useState(null);
     const [cat, setCat] = useState(state?.cat || "");
     const date = moment().locale("pt-br").format("YYYY-MM-DD HH:mm:ss");
+
+    const navigate = useNavigate();
 
     const uploadImg = async () => {
         try {
@@ -34,6 +36,7 @@ export const Write = () => {
             }) : await api.post("/posts", {
                 title, desc, img: file ? imgUrl : "", cat , date
             });
+            navigate("/");
         } catch (err) {
             console.log(err);
         };
