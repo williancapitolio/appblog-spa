@@ -27,7 +27,7 @@ export const Write = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const imgUrl = uploadImg();
+        const imgUrl = await uploadImg();
         try {
             state ? await api.patch(`/posts/${state.id}`, {
                 title, desc, img: file ? imgUrl : "", cat 
