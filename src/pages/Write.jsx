@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { api } from "../services/Api";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import moment from "moment/moment";
+import "moment/locale/pt-br";
 
 export const Write = () => {
     const state = useLocation().state;
@@ -10,6 +12,7 @@ export const Write = () => {
     const [desc, setDesc] = useState(state?.desc || "");
     const [file, setFile] = useState(null);
     const [cat, setCat] = useState(state?.cat || "");
+    const date = moment().locale("pt-br").format("YYYY-MM-DD HH:mm:ss");
 
     const uploadImg = async () => {
         try {
@@ -26,7 +29,11 @@ export const Write = () => {
         e.preventDefault();
         const imgUrl = uploadImg();
         try {
-            
+            state ? await api.patch(`/posts/${state.id}`, {
+                title, desc, img: file ? imgUrl : "", cat 
+            }) : await api.post("/posts", {
+                title, desc, img: file ? imgUrl : "", cat , date
+            });
         } catch (err) {
             console.log(err);
         };
@@ -35,7 +42,7 @@ export const Write = () => {
     return (
         <div className="add">
             <div className="content">
-                <input type="text" placeholder="Título" value={title} onChange={e => setTitle(e.target.value)} />
+                <input type="text" placeholder="Título" value={title} onChange={e => setTitle(e.target.value)} required/>
                 <div className="editorContainer">
                     <ReactQuill className="editor" theme="snow" value={desc} onChange={setDesc} />
                 </div>
