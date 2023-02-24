@@ -50,7 +50,7 @@ export const Single = () => {
                         <p>Postado há {moment(post.date).locale("pt-br").fromNow(true)}</p>
                     </div>
                     {currentUser.username === post.username && <div className="edit">
-                        <Link className="link" to={`/write?edit=2`}>
+                        <Link className="link" to={`/write?edit=2`} state={post}>
                             <AiOutlineEdit className="action" size={25} />
                         </Link>
                         <AiOutlineDelete className="action" size={25} onClick={handleDelete} />
